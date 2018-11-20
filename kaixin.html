@@ -36,6 +36,18 @@
                 box-shadow: 0px 0px 8px 5px #ccc;
                 height: 25vh
             }
+            #msg{
+                width: 80%;
+                margin: 10px auto;
+            }
+            #msg p {
+                line-height: 5vw;
+                overflow: hidden;
+                color: #717171;
+                display: block;
+                margin-bottom: 5vw;
+                font-size: 2.5vw;
+            }
         </style>
     </head>
     <body>
@@ -47,6 +59,11 @@
             <p id='url'></p>
             <div id="qrcode"></div>
     	</div>
+        <div id='msg'>
+            <h3>注意</h3>
+            <p>ios下载：点击下载按钮之后，出现确认框选择安装之后回到系统桌面，即可看到ios正在下载安装中，安装完毕之后需要到系统设置-》通用-》设备管理里面点击信任该APP的证书</p>
+            <p>android下载：点击下载按钮之后，到浏览器下载管理里面即可看到该app正处于下载中，完毕后若无法自动安装，请手动点击执行安装！</p>
+        </div>
         <script type="text/javascript" src="https://next.yijiasheqv.com/qrcode.min.js"></script>
 	    <script type="text/javascript">
          function checkPlatform(){
