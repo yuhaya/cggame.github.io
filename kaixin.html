@@ -6,7 +6,7 @@
         <style type="text/css">
         	#logo{
         		display: block;
-        		height: 25vh;
+        		height: 15vh;
         		margin: 10vh auto 5vh;
         	}
         	a{
@@ -15,7 +15,7 @@
         		line-height: 5vh;
         		background-color: #ea6f5a;
         		text-align: center;
-        		display: block;
+        		display: none;
         		border-radius: 10px;
         		margin: 5vh auto;
         		color: #fff;
@@ -25,15 +25,58 @@
         	h2{
         		text-align: center;
         	}
+            #url{
+                text-align: center;
+            }
+            #qrcode img{
+                display: block;
+                border:4px solid #000;
+                margin: 10px auto;
+                box-shadow: 0px 0px 8px 5px #ccc;
+                height: 25vh
+            }
         </style>
     </head>
     <body>
     	<img src="https://next.yijiasheqv.com/kaixin/512.png" id=logo>
     	<h2 style="font-size: 3vh;height: 3vh;">开心娱乐</h2>
     	<div>
-    		<a style="text-align:center" href="itms-services:///?action=download-manifest&url=https://next.yijiasheqv.com/kaixin/manifest.plist">IOS 下载</a>
-	    	<a style="text-align:center" href="https://next.yijiasheqv.com/kaixin/app.apk" target="_blank">Android 下载</a>
+    		<a id='ios' style="text-align:center;" href="itms-services:///?action=download-manifest&url=https://next.yijiasheqv.com/kaixin/manifest.plist">IOS 下载</a>
+	    	<a id='android' style="text-align:center;" href="https://next.yijiasheqv.com/kaixin/app.apk" target="_blank">Android 下载</a>
+            <p id='url'></p>
+            <div id="qrcode"></div>
     	</div>
-	    
+        <script type="text/javascript" src="https://next.yijiasheqv.com/qrcode.min.js"></script>
+	    <script type="text/javascript">
+         function checkPlatform(){
+
+              if(/android/i.test(navigator.userAgent)){
+
+                  document.getElementById('ios').style.display="none";
+                  document.getElementById('android').style.display="block";
+                  return;
+
+              }
+
+              if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+
+                  if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
+                    document.getElementById('ios').style.display="block";
+                    document.getElementById('android').style.display="none";
+                  }else{
+                    document.getElementById('url').innerText = "请从系统的safari浏览器中打开该页面!";
+                  }
+                  
+                  return;
+
+              }
+
+              document.getElementById('url').innerText = "请使用手机浏览器扫码以下二维码从系统浏览器打开";
+              new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
+              
+
+            } 
+            checkPlatform();
+        </script>
     </body>
 </html>
