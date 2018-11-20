@@ -27,7 +27,7 @@
         	}
             #url{
                 text-align: center;
-		font-size: 5vw;
+                font-size: 5vw;
             }
             #qrcode img{
                 display: block;
@@ -56,6 +56,7 @@
               if(/android/i.test(navigator.userAgent)){
                 if (ua.match(/MicroMessenger/i) == "micromessenger") {
                     document.getElementById('url').innerText = "请点击右上角选择在浏览器打开!";
+                    new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
                     return;
                 }
 
@@ -69,6 +70,7 @@
 
                     if (ua.match(/MicroMessenger/i) == "micromessenger") {
                         document.getElementById('url').innerText = "请点击右上角选择在Safari中打开!";
+                        new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
                         return;
                     }
 
@@ -77,6 +79,7 @@
                     document.getElementById('android').style.display="none";
                   }else{
                     document.getElementById('url').innerText = "请从系统的safari浏览器中打开该页面!";
+                    new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
                   }
                   
                   return;
