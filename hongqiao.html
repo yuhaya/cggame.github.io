@@ -27,7 +27,7 @@
             }
             #url{
                 text-align: center;
-                font-size: 2vw;
+                font-size: 5vw;
                 width: 80%;
                 margin: 0px auto;
             }
@@ -66,7 +66,7 @@
         </div>
         <div id='msg'>
             <h3>注意</h3>
-            <p style="color: red;">请勿通过微信，QQ扫码，请通过其它二维码识别软件扫码打开或者直接打开系统浏览器输入该页面网址打开该安装页面！请勿通过微信，QQ等应用的内置浏览器打开安装</p>
+            <p style="color: red;">请通过系统浏览器打开该安装页面！请勿通过微信，QQ等应用的内置浏览器打开安装</p>
             <p id="iosmsg">安装说明：点击下载按钮之后，出现确认框选择安装之后回到系统桌面，即可看到ios正在下载安装中，安装完毕之后需要到系统设置-》通用-》设备管理里面点击信任该APP的证书</p>
             <p id="androidmsg">安装说明：点击下载按钮之后，到浏览器下载管理里面即可看到该app正处于下载中，完毕后若无法自动安装，请手动点击执行安装！</p>
         </div>
@@ -115,7 +115,7 @@
 
               }
 
-              document.getElementById('url').innerText = "请勿通过微信，QQ扫码，请通过其它二维码识别软件扫码打开或者直接打开系统浏览器输入该页面网址打开该安装页面！";
+              document.getElementById('url').innerText = "请使用手机浏览器扫码以下二维码从系统浏览器打开";
               new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
               
 
