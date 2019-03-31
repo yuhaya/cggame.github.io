@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>超越神话</title>
+        <style type="text/css">
+            #logo{
+                display: block;
+                height: 15vh;
+                margin: 10vh auto 5vh;
+            }
+            a{
+                width: 80%;
+                height: 5vh;
+                line-height: 5vh;
+                background-color: #ea6f5a;
+                text-align: center;
+                display: none;
+                border-radius: 10px;
+                margin: 5vh auto;
+                color: #fff;
+                text-decoration: none;
+                font-size: 3vh;
+            }
+            h2{
+                text-align: center;
+            }
+            #url{
+                text-align: center;
+                font-size: 5vw;
+                width: 80%;
+                margin: 0px auto;
+            }
+            #qrcode img{
+                display: block;
+                border:4px solid #000;
+                margin: 10px auto;
+                box-shadow: 0px 0px 8px 5px #ccc;
+                height: 25vh
+            }
+            #msg{
+                width: 80%;
+                margin: 10px auto;
+            }
+            #msg p {
+                line-height: 5vw;
+                overflow: hidden;
+                color: #717171;
+                display: block;
+                margin-bottom: 5vw;
+                font-size: 2.5vw;
+            }
+            #msg #iosmsg,#msg #androidmsg{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="https://next.yijiasheqv.com/shenghua/512.png" id=logo>
+        <h2 style="font-size: 3vh;height: 3vh;">叮叮娱乐</h2>
+        <div>
+            <a id='ios' style="text-align:center;" href="itms-services:///?action=download-manifest&url=https://next.yijiasheqv.com/shenghua/manifest.plist">IOS 下载</a>
+            <a id='android' style="text-align:center;" href="https://next.yijiasheqv.com/shenghua/app.apk" target="_blank">Android 下载</a>
+            <p id='url'></p>
+            <div id="qrcode"></div>
+        </div>
+        <div id='msg'>
+            <h3>注意</h3>
+            <p style="color: red;">请通过系统浏览器打开该安装页面！请勿通过微信，QQ等应用的内置浏览器打开安装</p>
+            <p id="iosmsg">安装说明：点击下载按钮之后，出现确认框选择安装之后回到系统桌面，即可看到ios正在下载安装中，安装完毕之后需要到系统设置-》通用-》设备管理里面点击信任该APP的证书</p>
+            <p id="androidmsg">安装说明：点击下载按钮之后，到浏览器下载管理里面即可看到该app正处于下载中，完毕后若无法自动安装，请手动点击执行安装！</p>
+        </div>
+        <script type="text/javascript" src="https://next.yijiasheqv.com/qrcode.min.js"></script>
+        <script type="text/javascript">
+         function checkPlatform(){
+                var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+                
+
+              if(/android/i.test(navigator.userAgent)){
+                if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                    document.getElementById('url').innerText = "请点击右上角选择在浏览器打开!";
+                    new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
+                    return;
+                }
+
+                  document.getElementById('ios').style.display="none";
+                  document.getElementById('android').style.display="block";
+
+                  document.getElementById('iosmsg').style.display="none";
+                  document.getElementById('androidmsg').style.display="block";
+                  return;
+
+              }
+
+              if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+
+                    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                        document.getElementById('url').innerText = "请点击右上角选择在Safari中打开!";
+                        new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
+                        return;
+                    }
+
+                  if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
+                    document.getElementById('ios').style.display="block";
+                    document.getElementById('android').style.display="none";
+
+                    document.getElementById('iosmsg').style.display="block";
+                    document.getElementById('androidmsg').style.display="none";
+                  }else{
+                    document.getElementById('url').innerText = "请从系统的safari浏览器中打开该页面!";
+                    new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
+                  }
+                  
+                  return;
+
+              }
+
+              document.getElementById('url').innerText = "请使用手机浏览器扫码以下二维码从系统浏览器打开";
+              new QRCode(document.getElementById("qrcode"), window.location.href);  // 设置要生成二维码的链接
+              
+
+            } 
+            checkPlatform();
+        </script>
+    </body>
+</html>
